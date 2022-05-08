@@ -1,0 +1,48 @@
+<div *ngIf= "okInsert" class= "container mt-4
+">
+  <div class="row">
+     <div class="alert alert-success" role="alert">
+       Remédio<b> {{formRemedio.idRemedio}} - {{formRemedio.nomeRemedio}}</b> cadastrado com sucesso!
+    </div>
+  </div>
+</div>
+<div class="container mt-5 mb-5">
+  <div class="eight mb-5">
+    <h1>Cadastre um remédio</h1>
+  </div>
+  <form>
+    <div class="form-group mt-4 mb-4">
+      <label for="nome">Nome do remédio</label>
+      <input name="nome" class="form-control col-md-6" type="text" placeholder="Insira o nome do remédio" [(ngModel)]="formRemedio.nomeRemedio">
+    </div>
+
+    <div class="form-group mt-4 mb-4">
+      <label for="status">Status do medicamento</label>
+      <select name="status"
+              id="status"
+              class="form-select col-md-4"
+              [(ngModel)]="formRemedio.statusRemedioUso">
+        <option value="U">Medicamento em Uso</option>
+        <option value="P">Medicamento Pausado</option>
+        <option value="F">Medicamento Finalizado</option>
+        <option value="I">Medicamento Interrompido</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-4 mb-4">
+      <label for="status">Prazo do remédio:</label>
+      <div class="input-group">
+        <input class="form-control col-md-4" placeholder="ano-mês-data"
+               name="dataFinalizacao" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="dataFinalizacao">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAApElEQVQokdWSsQrCQBBEnxJTCFZpFFSC/+JH2OVHUuUvAylELK0EG4tLcXMS43oXsHJgWbidGXaPgXesgQobleYmcuAEOOBglNM8t4SdCKnqgkEm8UbuNfAEbsZmBbAAGvHPQTxTPwKPb3cByyE/Gw2vwD0iXlmPJf6eMiL84M0T5Cj+VBx+26nvE4bbER/wiWmZlrBW/Fc4wKdnN2HbCz6Fv6EHIvkn/TXq/DwAAAAASUVORK5CYII="/></button>
+      </div>
+    </div>
+  </form>
+
+  <div class="form-group row">
+    <div class="col-sm-10 mt-4 mb-4">
+        <button (click)="save()" type="submit" class="btn btn-dark mr-3">Cadastrar</button>
+        <button (click)="resetForm()" type="reset" class="btn btn-dark">Limpar</button>
+    </div>
+  </div>
+</div>

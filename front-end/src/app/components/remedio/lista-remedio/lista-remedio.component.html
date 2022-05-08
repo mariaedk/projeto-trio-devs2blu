@@ -1,0 +1,45 @@
+<div class="container mt-5 mb-5">
+  <h1>Lista de Remédios</h1>
+  <hr class="mb-5">
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Status</th>
+          <th scope="col">Data de Vencimento da Medicação</th>
+          <th scope="col">Opções</th>
+
+        </tr>
+      </thead>
+      <tbody *ngFor="let remedio of listaRemedios$ | async">
+        <tr>
+          <td>{{ remedio.nomeRemedio }}</td>
+          <td>{{ remedio.statusRemedioUso }}</td>
+          <td>{{ remedio.deadLineRemedio | date: 'dd/MM/yyyy' }}</td>
+          <td>
+            <div class="d-flex justify-content-center">
+              <button (click)="confirmAction(remedio)" type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#modalUpdateRemedio">Update</button>
+              <button (click)="confirmAction(remedio)" type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modalDeleteRemedio">Deletar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-update-container">
+  <app-update-remedio
+  [statusEdit]="monitoraStatusAction$"
+  [remedioEdit]="remedioAction"
+  >
+  </app-update-remedio>
+</div>
+
+<div class="modal-delete-container">
+  <app-delete-remedio
+  [statusDelete]="monitoraStatusAction$"
+  [remedioDelete]="remedioAction">
+  </app-delete-remedio>
+</div>
