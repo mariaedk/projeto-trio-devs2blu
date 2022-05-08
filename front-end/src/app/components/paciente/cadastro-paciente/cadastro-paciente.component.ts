@@ -1,0 +1,71 @@
+import { Remedio } from './../../../models/remedio/remedio';
+import { RemedioService } from './../../../services/remedio/remedio.service';
+import { PacienteService } from './../../../services/paciente/paciente.service';
+import { Paciente } from './../../../models/paciente/paciente';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-cadastro-paciente',
+  templateUrl: './cadastro-paciente.component.html',
+  styleUrls: ['./cadastro-paciente.component.scss']
+})
+export class CadastroPacienteComponent implements OnInit {
+
+  formPaciente: Paciente = new Paciente({});
+
+  existRemedios: boolean = true;
+
+  listaRemedios$ = new Observable<Remedio[]>();
+  listaRemediosSelecionados$ = new Observable<Remedio[]>();
+
+  remedioSelecionado = new Remedio({});
+
+  okInsert: boolean = false;
+
+  constructor(private pacienteService: PacienteService,
+              private remedioService: RemedioService) { }
+
+  ngOnInit(): void {
+    this.getRemedios();
+  }
+
+  getRemedios()
+  {
+    this.listaRemedios$ = this.remedioService.getRemedios();
+  }
+
+  addPaciente()
+  {
+    // todo: ao clicar em salvar, deve-se atribuir a lista de remedios selecionados ao formPaciente.
+    this.pacienteService.postPaciente(this.formPaciente).subscribe(
+      (paciente) => {
+        if (!(typeof paciente.id == 'undefined') && paciente.id > 0)
+        {
+          this.okInsert = true;
+          setTimeout(()=>
+          {
+            this.okInsert = false;
+            this.formPaciente = new Paciente({});
+          },3000);
+        }
+      }
+    )
+  }
+
+  addRemedioLista(remedio: Remedio)
+  {
+    this.existRemedios = true;
+    // todo: adicionar o remedio para a listaRemediosSelecionados
+  }
+
+  removeRemedioLista(remedio: Remedio)
+  {
+    // TODO
+  }
+
+  resetForm()
+  {
+    this.formPaciente = new Paciente({});
+  }
+}

@@ -1,0 +1,26 @@
+<div class="container mt-5 mb-5">
+  <h1>Lista de Remédios</h1>
+  <hr class="mb-5">
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Frequência</th>
+          <th scope="col">Status</th>
+          <th scope="col">Paciente</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let remedio in listaRemedios$ | async; let medicamento in listaMedicamentosPaciente$ | async">
+        <tr>
+          <th scope="row"> {{ remedio.id }} </th>
+          <td>{{ remedio.nome }}</td>
+          <td>{{ medicamento.frequencia }}</td>
+          <td>{{ medicamento.statusMedicamentoUso }}</td>
+          <td>{{ medicamento.paciente.nome }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
