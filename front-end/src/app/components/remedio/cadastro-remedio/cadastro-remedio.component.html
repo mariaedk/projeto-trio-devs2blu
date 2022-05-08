@@ -1,7 +1,7 @@
 <div *ngIf= "okInsert" class= "container">
   <div class="row">
      <div class="alert alert-success" role="alert">
-       Remédio<b> {{formRemedio.id}} - {{formRemedio.nome}}</b> cadastrado com sucesso!
+       Remédio<b> {{formRemedio.idRemedio}} - {{formRemedio.nomeRemedio}}</b> cadastrado com sucesso!
     </div>
   </div>
 </div>
@@ -12,26 +12,24 @@
   <form>
     <div class="form-group">
       <label for="nome">Nome do remédio</label>
-      <input name="nome" class="form-control col-md-6" type="text" placeholder="Insira o nome do remédio" [(ngModel)]="formRemedio.nome">
+      <input name="nome" class="form-control col-md-6" type="text" placeholder="Insira o nome do remédio" [(ngModel)]="formRemedio.nomeRemedio">
     </div>
-
-      <div class="form-group">
-      <label for="frequencia">Frequência do remédio</label>
-      <input name="frequencia" class="form-control col-md-4" type="text" placeholder="Insira a frequência do remédio" [(ngModel)]="formMedicamentoPaciente.frequencia">
-      </div>
 
     <div class="form-group">
       <label for="status">Status do medicamento</label>
       <select name="status"
               id="status"
               class="form-control col-md-4"
-              [(ngModel)]="formMedicamentoPaciente.statusMedicamentoUso">
+              [(ngModel)]="formRemedio.statusRemedioUso">
         <option value="U">Medicamento em Uso</option>
         <option value="P">Medicamento Pausado</option>
         <option value="F">Medicamento Finalizado</option>
         <option value="I">Medicamento Interrompido</option>
       </select>
     </div>
+
+
+
   </form>
 
   <div class="form-group row">

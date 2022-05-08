@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ListaPacienteComponent } from './components/paciente/lista-paciente/lista-paciente.component';
 import { ListaRemedioComponent } from './components/remedio/lista-remedio/lista-remedio.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListaRemedioComponent } from './components/remedio/lista-remedio/lista-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

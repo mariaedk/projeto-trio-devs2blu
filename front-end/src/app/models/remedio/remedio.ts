@@ -1,7 +1,9 @@
 export class Remedio
 {
-  id?: number;
-  nome?: string;
+  idRemedio?: number;
+  nomeRemedio?: string;
+  statusRemedioUso?: string;
+  deadLineRemedio?: Date;
 
   constructor(obj: Partial<Remedio>)
   {

@@ -1,7 +1,7 @@
 <div *ngIf= "okInsert" class= "container">
   <div class="row">
      <div class="alert alert-success" role="alert">
-       Paciente<b> {{formPaciente.id}} - {{formPaciente.nome}}</b> cadastrado com sucesso!
+       Paciente<b> {{formPaciente.idPaciente}} - {{formPaciente.nomePaciente}}</b> cadastrado com sucesso!
     </div>
   </div>
 </div>
@@ -12,12 +12,12 @@
   <form>
     <div class="form-group">
       <label for="nome">Nome</label>
-      <input name="nome" class="form-control col-md-6" type="text" placeholder="Insira o nome do paciente" [(ngModel)]="formPaciente.nome">
+      <input name="nome" class="form-control col-md-6" type="text" placeholder="Insira o nome do paciente" [(ngModel)]="formPaciente.nomePaciente">
     </div>
 
       <div class="form-group">
-      <label for="idade">Telefone</label>
-      <input name="idade" class="form-control col-md-4" type="text" placeholder="Telefone do paciente" [(ngModel)]="formPaciente.telefone">
+      <label for="telefone">Telefone</label>
+      <input name="telefone" class="form-control col-md-4" type="text" placeholder="Telefone do paciente" [(ngModel)]="formPaciente.telefonePaciente">
       </div>
 
     <div class="form-group">
@@ -25,7 +25,7 @@
       <select name="sexo"
               id="sexo"
               class="form-control col-md-4"
-              [(ngModel)]="formPaciente.genero">
+              [(ngModel)]="formPaciente.generoPaciente">
         <option value="M">Masculino</option>
         <option value="F">Feminino</option>
         <option value="P">Outro</option>
@@ -36,9 +36,9 @@
       <label for="remedio">Remédio:</label>
       <select name="remedio"
       id="remedio"
-      [(ngModel)]="formPaciente.remedio.id"
+      [(ngModel)]="formPaciente.remedioDto.idRemedio"
       class="form-control col-md-4">
-      <option *ngFor="let rem of listaRemedios$ | async" value="{{rem.id}}"> {{rem.nome}} </option>
+      <option *ngFor="let rem of listaRemedios$ | async" value="{{rem.idRemedio}}"> {{rem.nomeRemedio}} </option>
       </select>
     </div>
 

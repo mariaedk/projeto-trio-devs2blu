@@ -1,6 +1,4 @@
-import { MedicamentoPacienteService } from './../../../services/medicamento-paciente/medicamento-paciente.service';
 import { RemedioService } from './../../../services/remedio/remedio.service';
-import { MedicamentoPaciente } from './../../../models/medicamento-paciente/medicamento-paciente';
 import { Remedio } from './../../../models/remedio/remedio';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,10 +10,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class CadastroRemedioComponent implements OnInit {
 
-  constructor(private medicPacienteService: MedicamentoPacienteService, private remedioService: RemedioService) { }
+  constructor(private remedioService: RemedioService) { }
 
   formRemedio: Remedio = new Remedio({});
-  formMedicamentoPaciente: MedicamentoPaciente = new MedicamentoPaciente({});
 
   okInsert: boolean = false;
 
@@ -25,19 +22,6 @@ export class CadastroRemedioComponent implements OnInit {
 
   addRemedio()
   {
-    this.medicPacienteService.postMedicamento(this.formMedicamentoPaciente).subscribe(
-      (resp) => {
-        if (!(typeof resp.id == 'undefined') && resp.id > 0)
-        {
-          this.okInsert = true;
-          setTimeout(()=>
-          {
-            this.okInsert = false;
-            this.formMedicamentoPaciente = new MedicamentoPaciente({});
-          },3000);
-        }
-      }
-    )
 
     this.remedioService.postRemedio(this.formRemedio).subscribe(
       (resp) => {
@@ -49,7 +33,6 @@ export class CadastroRemedioComponent implements OnInit {
   resetForm()
   {
     this.formRemedio = new Remedio({});
-    this.formMedicamentoPaciente = new MedicamentoPaciente({});
   }
 
 }

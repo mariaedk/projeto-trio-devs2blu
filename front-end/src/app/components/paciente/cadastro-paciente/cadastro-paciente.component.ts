@@ -37,10 +37,9 @@ export class CadastroPacienteComponent implements OnInit {
 
   addPaciente()
   {
-    // todo: ao clicar em salvar, deve-se atribuir a lista de remedios selecionados ao formPaciente.
     this.pacienteService.postPaciente(this.formPaciente).subscribe(
       (paciente) => {
-        if (!(typeof paciente.id == 'undefined') && paciente.id > 0)
+        if (!(typeof paciente.idPaciente == 'undefined') && paciente.idPaciente > 0)
         {
           this.okInsert = true;
           setTimeout(()=>

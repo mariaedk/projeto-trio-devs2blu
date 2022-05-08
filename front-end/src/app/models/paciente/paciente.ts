@@ -1,11 +1,11 @@
 import { Remedio } from './../remedio/remedio';
 export class Paciente
 {
-  id?: number;
-  nome?: string;
-  genero?: string;
-  telefone?: string;
-  remedio: Remedio = new Remedio({});
+  idPaciente?: number;
+  nomePaciente?: string;
+  generoPaciente?: string;
+  telefonePaciente?: number;
+  remedioDto: Remedio = new Remedio({});
 
   constructor(obj: Partial<Paciente>)
   {
