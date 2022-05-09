@@ -1,4 +1,4 @@
-# Projeto Trios
+# Projeto "Seu Remédio"
 
 * Temática: Saúde/Social
 
@@ -20,7 +20,6 @@
   <hr>
 
   * Tecnologias utilizadas:
-
     * Front-end: Angular CLI 13 na IDE VS Code.
     * Back-end: Java no framework Springboot.
     * Banco de dados utilizado: MySQL
