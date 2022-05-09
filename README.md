@@ -13,9 +13,9 @@
   * Estes remédios possuem nome, status e data de validade. Todos os dados serão cadastrados pela pessoa que irá gerenciar estes medicamentos.
   * Existe uma tela principal que filtra os pacientes e os respectivos medicamentos que usam por meio do status do medicamento:
     * U - Medicamento em uso.
-	  * P - Medicamento pausado.
-	  * F - Medicamento finalizado.
-	  * I - Medicamento interrompido.
+    * P - Medicamento pausado.
+    * F - Medicamento finalizado. 
+    * I - Medicamento interrompido.
 
   <hr>
 
