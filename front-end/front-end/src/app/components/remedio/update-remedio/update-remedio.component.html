@@ -1,0 +1,51 @@
+<!-- Modal -->
+<div class="modal fade" id="modalUpdateRemedio" tabindex="-1" aria-labelledby="modalDeleteNotaLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDeleteNotaLabel">Alterar remédio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="alert" role="alert">
+
+          <form>
+            <div class="form-group mt-4 mb-4">
+              <label for="nome">Nome do remédio</label>
+              <input name="nome" class="form-control col-md" type="text" placeholder="Insira o nome do remédio" [(ngModel)]="remedioEdit.nomeRemedio">
+            </div>
+
+            <div class="form-group mt-4 mb-4">
+              <label for="status">Status do medicamento</label>
+              <select name="status"
+                      id="status"
+                      class="form-control col-md"
+                      [(ngModel)]="remedioEdit.statusRemedioUso">
+                <option value="U">Medicamento em Uso</option>
+                <option value="P">Medicamento Pausado</option>
+                <option value="F">Medicamento Finalizado</option>
+                <option value="I">Medicamento Interrompido</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-4 mb-4">
+              <label for="status">Prazo do remédio:</label>
+              <div class="input-group">
+                <input class="form-control col-md" placeholder="{{ remedioEdit.deadLineRemedio | date: 'dd/MM/yyyy' }}"
+                       name="dataFinalizacao" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="dataFinalizacao">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABmJLR0QA/wD/AP+gvaeTAAAApElEQVQokdWSsQrCQBBEnxJTCFZpFFSC/+JH2OVHUuUvAylELK0EG4tLcXMS43oXsHJgWbidGXaPgXesgQobleYmcuAEOOBglNM8t4SdCKnqgkEm8UbuNfAEbsZmBbAAGvHPQTxTPwKPb3cByyE/Gw2vwD0iXlmPJf6eMiL84M0T5Cj+VBx+26nvE4bbER/wiWmZlrBW/Fc4wKdnN2HbCz6Fv6EHIvkn/TXq/DwAAAAASUVORK5CYII="/></button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="cancelUpdate()" type="button" class="btn btn-secondary" data-dismiss="modal" data-dismiss="modal">Cancel</button>
+        <button (click)="update(remedioEdit)"  type="button" class="btn btn-success" data-dismiss="modal">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

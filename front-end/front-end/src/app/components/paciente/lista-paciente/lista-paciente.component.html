@@ -1,0 +1,45 @@
+<div class="container mt-5 mb-5">
+  <h1>Lista de Pacientes</h1>
+  <hr class="mb-5">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered ">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Gênero</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Remédio</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let paciente of listaPacientes$ | async">
+        <tr>
+          <td>{{ paciente.nomePaciente }}</td>
+          <td><b>{{ paciente.generoPaciente }}</b></td>
+          <td>{{ paciente.telefonePaciente }}</td>
+          <td>{{ paciente.remedioDto?.nomeRemedio }}</td>
+          <td>
+            <div class="d-flex justify-content-center">
+              <button (click)="confirmAction(paciente)" type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#modalUpdatePaciente">Atualizar</button>
+              <button (click)="confirmAction(paciente)" type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modalDeletePaciente">Deletar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-update-container">
+  <app-update-paciente
+  [statusEdit]="monitoraStatusAction$"
+  [pacienteEdit]="pacienteAction"
+  ></app-update-paciente>
+</div>
+
+<div class="modal-delete-container">
+  <app-delete-paciente
+  [statusDelete]="monitoraStatusAction$"
+  [pacienteDelete]="pacienteAction">
+  </app-delete-paciente>
+</div>
